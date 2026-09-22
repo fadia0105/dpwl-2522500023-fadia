@@ -8,7 +8,7 @@ Ketiganya merupakan tahapan mata kuliah/topik pengembangan aplikasi web yang sal
 -PHP Terstruktur (Native/Procedural): Kode logika database, pemrosesan data, dan tampilan HTML digabung dalam satu file yang sama (atau terpisah secara sederhana menggunakan `include/require`). Sulit dikembangkan untuk skala besar dan lebih rumit dieksekusi secara tim karena semua fungsi menumpuk di satu tempat.
 -PHP MVC (Model-View-Controller):Kode dipisah secara ketat menjadi 3 komponen utama berdasarkan tugasnya masing-masing. Arsitektur ini membuat kode lebih rapi, modular, mudah di-maintain, dan mendukung kolaborasi tim (misal: developer frontend fokus pada View, backend fokus pada Model & Controller).
 3. Fungsi Model, View, dan Controller
--Model: Bertanggung jawab atas pengelolaan data dan logika bisnis. Model berhubungan langsung dengan database (menjalankan query SELECT, INSERT, UPDATE, DELETE).
+-Model:Bertanggung jawab atas pengelolaan data dan logika bisnis. Model berhubungan langsung dengan database (menjalankan query SELECT, INSERT, UPDATE, DELETE).
 -View:Bertanggung jawab untuk menyajikan tampilan antarmuka (UI) kepada pengguna (HTML/CSS). View hanya menerima data dari Controller dan menampilkannya tanpa memproses logika database.
 -Controller: Bertindak sebagai jembatan/penengah antara Model dan View. Controller menerima request dari pengguna, meminta data dari Model jika diperlukan, lalu menentukan View mana yang harus ditampilkan beserta datanya.
 4. Alur Request–Response MVC
