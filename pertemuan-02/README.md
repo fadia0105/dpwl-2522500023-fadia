@@ -106,13 +106,13 @@ Alur ini menggambarkan proses MVC secara utuh saat aplikasi sudah terhubung ke d
 
 ## 7. Hasil pengujian Dan debugging
 ### Gambar 1. Hasil Pengujian debugging
-![Gambar 1 - hasil debuging](dokumentasi/hasilpengujian.jpg)
+![Gambar 1 - Hasil pengujian](dokumentasi/Hasilpengujian.jpg)
 - Hasil Pengujian (Testing)
 Pengujian dilakukan menggunakan perintah sintaks PHP CLI (php -l) untuk memeriksa ketersediaan dan keabsahan sintaks (syntax check) pada struktur file kerangka kerja yang dibangun.
 1. Skenario Pengujian Valid (Sintaks Benar)
 Deskripsi Skenario: Memeriksa seluruh file konfigurasi, helper, controller, dan core router untuk memastikan tidak ada kesalahan penulisan sintaks (syntax error) sebelum aplikasi dijalankan di web server.
   - Langkah Pengujian:
-  Menjalankan php -l application\config\config.php  
+   Menjalankan php -l application\config\config.php  
    Menjalankan php -l application\config\routes.php   
    Menjalankan php -l application\helpers\url_helper.php   
    Menjalankan php -l application\controllers\Home.php   
