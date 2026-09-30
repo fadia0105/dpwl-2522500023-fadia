@@ -105,6 +105,7 @@ Alur ini menggambarkan proses MVC secara utuh saat aplikasi sudah terhubung ke d
 -  View: Controller mengoper data tersebut ke View untuk disajikan.   Response: Hasil akhir dikirim kembali sebagai respon ke browser.   
 
 ## 7. Hasil pengujian Dan debugging
+### Gambar 1. Hasil Pengujian debugging
 ![Gambar 1 - hasil debuging](dokumentasi/hasilpengujian.jpg)
 - Hasil Pengujian (Testing)
 Pengujian dilakukan menggunakan perintah sintaks PHP CLI (php -l) untuk memeriksa ketersediaan dan keabsahan sintaks (syntax check) pada struktur file kerangka kerja yang dibangun.
