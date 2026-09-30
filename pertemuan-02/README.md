@@ -9,8 +9,6 @@
 ## 2. Struktur Direktori
 Folder PATH listing for volume OS
 Volume serial number is 0426-97FE
-Folder PATH listing for volume OS
-Volume serial number is 0426-97FE
 C:.
 │   index.php
 │   
@@ -58,10 +56,29 @@ Proses yang dilakukan oleh index.php:
 - Memanggil Router untuk menjalankan controller dan method yang sesuai. 
 Manfaat metode ini adalah membuat struktur kode lebih aman dan tertata, karena pengguna tidak bisa langsung membuka file controller atau view secara acak via URL
 
-## 4. Routing daan Pemetaan URL
+## 4. Berikut adalah penambahan tabel route modifikasi ATM (studi kasus Sistem Rental Mobil/Aplikasi DPW) serta penjelasan pemetaan alur komponennya:
 
-## 5.	Base URL dan helper 
-(jelaskan fugsi base URl () dan site URL(), kemudian berikan contoh penggunya pada implementasi P2
+| URL/Route | Controller | Method | Parameter | View |
+| --- | --- | --- | --- | --- |
+| / | Home | index | - | home/index.php |
+| home/index | Home | index | - | home/index.php |
+| home/info/mvc | Home | info | mvc | home/info.php |
+| info/routing | Home | info | routing | home/info.php |
+| mobil/detail/(:any) | Mobil | detail | $1 (misal: ID/Kode Mobil) | mobil/detail.php |
+
+- Penjelasan Pemetaan Route → Controller → Method → Parameter → View
+1. Route (`mobil/detail/(:any)`)
+Sintaks Route: Ditambahkan pada berkas `application/config/routes.php` dengan aturan `$route['mobil/detail/(:any)'] = 'mobil/detail/$1';`.
+Mekanisme: Ketika peramban mengakses URL seperti `.../index.php/mobil/detail/MB001`, `Router` mencocokkan pola URI tersebut.
+2. Controller (`Mobil.php`)
+* `Router` menginisialisasi kelas `Mobil` yang berada di berkas `application/controllers/Mobil.php`.
+3. Method (`detail()`) `Router` mengeksekusi method `detail()` di dalam Controller `Mobil`.
+4. Parameter (`MB001` / `$1`)
+ Nilai variabel dinamis dari URI (misalnya `MB001`) ditangkap oleh wildcard `(:any)` dan diteruskan sebagai argumen ke variabel `$id` pada method `detail($id)`.
+5. View (`mobil/detail.php`)
+ Method `detail()` memproses parameter tersebut, menyiapkan data, lalu memanggil method `$this->view('mobil/detail', $data)` untuk menampilkan struktur HTML dari berkas `application/views/mobil/detail.php` kepada pengguna.
+
+## 5.	Base URL dan helper (jelaskan fugsi base URl () dan site URL(), kemudian berikan contoh penggunya pada implementasi P2
 Base URL berfungsi menghasilkan URL lengkap ke root serta menghasilkan url asset CSS
 Localhost/dwpl-2522500023/
 Site_url berfungsi menampilkan parameter routing dan  membentuk URL navigasi internal aplikasi melewati front controller 
@@ -88,23 +105,31 @@ Alur ini menggambarkan proses MVC secara utuh saat aplikasi sudah terhubung ke d
 -  View: Controller mengoper data tersebut ke View untuk disajikan.   Response: Hasil akhir dikirim kembali sebagai respon ke browser.   
 
 ## 7. Hasil pengujian Dan debugging
-jika Ditemukan Kesalahan / Obstacle Selama Implementasi 
-- Gejala:
-Saat mengakses URL custom route http://localhost/dpwl-0344300002/index.php/info/routing, sistem menampilkan pesan error HTTP 500: "View tidak ditemukan."
-- Penyebab:
-Terjadi kesalahan penulisan (typo) pada nama berkas View di direktori application/views/home/. Berkas tersimpan dengan nama infop.php atau berada di luar folder home/, sehingga pemanggilan $this->view('home/info', $data); pada Home.php gagal menemukan file lokasi application/views/home/info.php.
-- Perbaikan:
-Mengubah nama berkas (rename) dari infop.php menjadi info.php di dalam direktori application/views/home/ agar sesuai dengan argumen pemanggilan View pada Controller.   
-- Hasil Uji Ulang:
-URL http://localhost/dpwl-0344300002/index.php/info/routing diakses kembali pada peramban. Halaman berhasil memuat View info.php dengan parameter topik routing tanpa pesan error.
+![Gambar 1 - hasil debuging](dokumentasi/hasilpengujian.jpg)
+- Hasil Pengujian (Testing)
+Pengujian dilakukan menggunakan perintah sintaks PHP CLI (php -l) untuk memeriksa ketersediaan dan keabsahan sintaks (syntax check) pada struktur file kerangka kerja yang dibangun.
+1. Skenario Pengujian Valid (Sintaks Benar)
+Deskripsi Skenario: Memeriksa seluruh file konfigurasi, helper, controller, dan core router untuk memastikan tidak ada kesalahan penulisan sintaks (syntax error) sebelum aplikasi dijalankan di web server.
+  - Langkah Pengujian:
+  Menjalankan php -l application\config\config.php  
+   Menjalankan php -l application\config\routes.php   
+   Menjalankan php -l application\helpers\url_helper.php   
+   Menjalankan php -l application\controllers\Home.php   
+   Menjalankan php -l system\core\Controller.php   
+   Menjalankan php -l system\core\Router.php   
 
-## 8. Bukti tangkapan layar
-Sisipkan gambar yang relavan dari folder dokumentasi/dengan perintah:
-### gambar 1. hasil pengujian utama 
-![Gambar 1 - Halaman Utama](dokumentasi/gambar1.jpg)
-### gambar 1. hasil pengujian custom Route
-![Gambar 1 - Halaman Utama](dokumentasi/gambar2.jpg)
+2. Skenario Pengujian Tidak Valid (Penanganan Error Sintaks)
+Deskripsi Skenario: Mensimulasikan kesalahan penulisan sintaks pada file penentu arah/alur routing, seperti lupa menyertakan titik koma (;) atau salah menuliskan nama fungsi/kelas pada Router.php atau index.php.   
+  - Langkah Pengujian:
+  Menghapus tanda ; pada salah satu baris kode di index.php (misalnya baris require_once SYSPATH . 'core/router.php').  
+   Menjalankan perintah php -l index.php melalui terminal.
 
+## 8. Bukti Tangkapan Layar
+Sisipkan gambar yang relevan dari folder dokumentasi/ dengan perintah:
+### Gambar 1. Hasil Pengujian Halaman Utama
+![Gambar 1 - hasil halaman uata](dokumentasi/gambar1.jpg)
+### Gambar 2. Hasil Pengujian Custom Route
+![Gambar 2 - Custom Route](dokumentasi/gambar2.jpg)
 
 ## 9. Pada Pertemuan 02 (P2), kerangka aplikasi berbasi MVC yang dibangun telah berhasil menyelesaikan fondasi utama arsitektur web.
 yang sudah dapat dilakukan oleh kerangka MVC saat ini (P2):
@@ -112,4 +137,4 @@ yang sudah dapat dilakukan oleh kerangka MVC saat ini (P2):
 -Sistem Routing Dinamis: Router.php dan routes.php mampu memetakan URL secara fleksibel ke Controller, method/action, serta meneruskan parameter ke komponen aplikasi.   
 -Pemisahan Alur Interaksi (Controller & View): Controller berperan mengatur alur logika dan data, sedangkan View hanya berfokus menyajikan struktur HTML.   
 -Pengelolaan URL & Aset: Menggunakan Helper (url_helper.php) untuk fungsi base_url() dan site_url() dalam memuat aset statis (seperti CSS) dan membuat tautan navigasi antarhalaman secara konsisten.  
-- Handling Error Dasar: Router dan Base Controller mampu mendeteksi dan menangani kondisi Controller/Method tidak ditemukan (HTTP 404) serta View tidak ditemukan (HTTP 500).   
+- Handling Error Dasar: Router dan Base Controller mampu mendeteksi dan menangani kondisi Controller/Method tidak ditemukan (HTTP 404) serta View tidak ditemukan (HTTP 500).
