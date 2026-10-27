@@ -16,5 +16,3 @@
 ![Hasil Pengujian 7](dokumentasi/HasilPengujian7.png)
 8. Hasil Pengujian 8
 ![Hasil pengujian 8](dokumentasi/HasilPengujian8.png)
-9. Hasil Pengujian 9
-![Hasil pengujian 9](dokumentasi/HasilPengujian9.png
