@@ -1,7 +1,7 @@
 # pertemuan-07
 ## DOKUMENTASI HASIL PENGUJIAN
 1. Hasil Pengujian 1
-![Hasil Pengujian 1](dokumentasi/TampilanSebelumLogin.png)
+![Tampilan Sebelum Login](dokumentasi/TampilanSebelumLogin.png)
 2. Hasil Pengujiann 2
 ![Hasil pengujian 2](dokumentasi/TampilanSetelahLogin.png)
 3. Hasil Pengujian 3
@@ -10,7 +10,7 @@
 ![Hasil Pengujian 4](dokumentasi/SetelahLogin.png)
 5. Hasil Pengujian 5
 ![Hasil Pengujian 5](dokumentasi/KeranjangMasihKosong.png)
-6. Hasil Pengujian 6
+6. Hasil Pengujian 6s
 ![Hasil Pengujian 6](dokumentasi/SudahAdadiKeranjang.png)
 7. Hasil Pengujian 7
 ![Hasil Pengujian 7](dokumentasi/TampilanKeranjang.png)
