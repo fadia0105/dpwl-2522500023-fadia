@@ -49,6 +49,11 @@ search"></i>
 <a href="<?= htmlspecialchars(site_url('admin/madmin'), ENT_QUOTES, 'UTF-8') ?>">
 <i class="fa fa-users"></i> <span>Manajemen Admin</span>
 </a>
+<li>
+<a href="<?= htmlspecialchars(site_url('admin/mobil'), ENT_QUOTES, 'UTF-8') ?>">
+<i class="fa fa-car"></i> <span>Manajemen Kendaraan</span>
+</a>
+</li>
 </li>
 </ul>
 <!-- /.sidebar-menu -->

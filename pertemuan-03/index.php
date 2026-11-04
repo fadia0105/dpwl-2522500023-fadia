@@ -1,5 +1,6 @@
 <?php
 session_start();
+date_default_timezone_set('Asia/Jakarta');
 define('FCPATH', __DIR__ . DIRECTORY_SEPARATOR);
 define('APPPATH', FCPATH . 'application' . DIRECTORY_SEPARATOR);
 define('SYSPATH', FCPATH . 'system' . DIRECTORY_SEPARATOR);
@@ -13,19 +14,18 @@ require_once SYSPATH . 'core/Router.php';
 $route = [];
 require APPPATH . 'config/routes.php';
 
-$uri = $_SERVER['PATH_INFO'] ?? '';
-
+// P6 menghilangkan penulisan index.php pada URL aplikasi
+/* $uri = $_SERVER['PATH_INFO'] ?? '';
 if ($uri === '') {
-    $requestPath = parse_url(
-        $_SERVER['REQUEST_URI'] ?? '/',
-        PHP_URL_PATH
-    ) ?? '/';
-
-    $scriptName = $_SERVER['SCRIPT_NAME'] ?? '/index.php';
-
-    if (str_starts_with($requestPath, $scriptName)) {
-        $uri = substr($requestPath, strlen($scriptName));
-    }
+$requestPath = parse_url(
+$_SERVER['REQUEST_URI'] ?? '/',
+PHP_URL_PATH
+) ?? '/';
+$scriptName = $_SERVER['SCRIPT_NAME'] ?? '/index.php';
+if (str_starts_with($requestPath, $scriptName)) {
+$uri = substr($requestPath, strlen($scriptName));
 }
+} */
+$uri = $_GET['route'] ?? ($_SERVER['PATH_INFO'] ?? '');
 $router = new Router($route);
 $router->dispatch($uri);
