@@ -40,3 +40,23 @@ tidak monoton, saya mengembangkan desainnya dengan beberapa elemen tambahan:
 Tabel menampilkan data dari seluruh kolom tabel `t_penyewa` kecuali `sandi`, yang sengaja tidak
 ditampilkan demi keamanan. Formulir memakai `enctype="multipart/form-data"` agar dapat mengunggah
 foto.
+- **Pengamanan tampilan:** seluruh data yang dicetak di View dilewatkan `htmlspecialchars()` untuk
+  mencegah XSS, termasuk atribut `data-*` yang dipakai modal. Validasi di browser (`required`,
+  `maxlength`, `pattern`, penghitung NIK) hanya membantu pengguna, sedangkan validasi sebenarnya
+  tetap dilakukan di Controller pada sisi server.
+- **Penghapusan aman:** modal konfirmasi mengirim formulir dengan metode POST, dan Controller
+  menolak metode selain POST untuk aksi hapus.
+
+  ### 3. Implementasi CRUD Berbasis MVC
+Saya memisahkan tanggung jawab sesuai pola MVC:
+- **Model** (`Mpenyewa_model.php`): berisi `getAll()`, `findByUserPlg()`, `create()`, `update()`,
+  dan `delete()`. Semua query memakai MySQLi *prepared statement* dengan `prepare()` dan
+  `bind_param()` sehingga aman dari SQL Injection.
+- **View** (`mpenyewa_view.php`): hanya menampilkan data dan formulir. Seluruh keluaran dilewatkan
+  `htmlspecialchars()` untuk mencegah XSS.
+- **Controller** (`Mpenyewa_controller.php`): mengatur alur melalui method `index` (Read),
+  `tambah` (Create), `ubah` (Update), dan `hapus` (Delete).
+  Password disimpan dalam bentuk *hash* menggunakan `password_hash($sandi, PASSWORD_DEFAULT)`.
+Saat mengubah data, kolom password boleh dikosongkan sehingga password lama tidak berubah;
+`update()` hanya menyertakan kolom `sandi` jika password baru diisi.
+
