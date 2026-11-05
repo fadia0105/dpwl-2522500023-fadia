@@ -60,3 +60,27 @@ Saya memisahkan tanggung jawab sesuai pola MVC:
 Saat mengubah data, kolom password boleh dikosongkan sehingga password lama tidak berubah;
 `update()` hanya menyertakan kolom `sandi` jika password baru diisi.
 
+### 4. Validasi, Pengamanan, dan Pengelolaan Foto
+- **Validasi dan sanitasi:** semua input di-`trim()` dan diperiksa di sisi server. Username 1-15
+  karakter (huruf, angka, titik, garis bawah, strip), NIK tepat 16 digit angka, nama hanya huruf
+  dan pemisah nama yang wajar (maksimal 100 karakter), nomor HP maksimal 15 karakter dengan
+  karakter yang diizinkan saja, alamat maksimal 300 karakter, dan password 8-72 karakter.
+  Username yang sudah dipakai ditolak.
+- **Kontrol akses:** setiap method controller diawali `require_admin_login()`. Penghapusan hanya
+  menerima metode POST.
+- **Pola PRG:** setelah tambah, ubah, atau hapus berhasil, aplikasi melakukan redirect ke
+  `admin/penyewa` dan menampilkan pesan lewat *flash message*, sehingga refresh halaman tidak
+  mengirim ulang formulir.
+- **Unggah foto KTP dan SIM A:** berkas diperiksa kode error unggah, ukuran (lebih dari 0 byte
+  dan maksimal 5 MB), jenis berkas dari isinya memakai `finfo` (hanya JPEG, PNG, WEBP), dan
+  `getimagesize()`. Berkas disimpan di `uploads/penyewa/` dengan nama acak. Jika unggah atau
+  penyimpanan ke database gagal, foto yang baru diunggah dihapus kembali. Saat mengubah data,
+  foto lama baru dihapus setelah database berhasil diperbarui, dan foto lama dipertahankan jika
+  tidak ada foto baru.
+## DOKUMENTASI HASIL PENGUJIAN
+1. Hasil Pengujian 1
+![Tampilan Sebelum Login](dokumentasiP8/TambahData.png)
+2. Hasil Pengujiann 2
+![Tampilan Setelah Login](dokumentasiP8/HapusData.png)
+3. Hasil Pengujian 3
+![Sebelum Login](dokumentasiP8/UbahData.png)
