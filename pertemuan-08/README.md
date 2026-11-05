@@ -79,11 +79,11 @@ Saat mengubah data, kolom password boleh dikosongkan sehingga password lama tida
   tidak ada foto baru.
 ## DOKUMENTASI HASIL PENGUJIAN
 1. Hasil Pengujian 1
-![Tambah Data ](dokumentasiP8/TambahData.png)
+![Tambah Data ](dokumentasi/TambahData.png)
 2. Hasil Pengujiann 2
-![Hapus Data ](dokumentasiP8/HapusData.png)
+![Hapus Data ](dokumentasi/HapusData.png)
 3. Hasil Pengujian 3
-![Ubah Data](dokumentasiP8/UbahData.png)
+![Ubah Data](dokumentasi/UbahData.png)
 
 ### 5. Pengujian
 Saya menguji tambah, tampil, ubah, dan hapus data, validasi input dan password, serta unggah
