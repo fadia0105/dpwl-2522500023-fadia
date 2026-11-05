@@ -77,6 +77,14 @@ Saat mengubah data, kolom password boleh dikosongkan sehingga password lama tida
   penyimpanan ke database gagal, foto yang baru diunggah dihapus kembali. Saat mengubah data,
   foto lama baru dihapus setelah database berhasil diperbarui, dan foto lama dipertahankan jika
   tidak ada foto baru.
+
+
+### 5. Pengujian
+Saya menguji tambah, tampil, ubah, dan hapus data, validasi input dan password, serta unggah
+foto (format salah dan ukuran melebihi batas). Saya juga memastikan fitur yang sudah ada
+(Manajemen Admin, Manajemen Kendaraan, katalog, dan keranjang) tetap berjalan. 
+FUNGSI NYA BERJALAN DENGAN BAIK
+
 ## DOKUMENTASI HASIL PENGUJIAN
 1. Hasil Pengujian 1
 ![Tambah Data ](dokumentasi/TambahData.png)
@@ -85,9 +93,4 @@ Saat mengubah data, kolom password boleh dikosongkan sehingga password lama tida
 3. Hasil Pengujian 3
 ![Ubah Data](dokumentasi/UbahData.png)
 
-### 5. Pengujian
-Saya menguji tambah, tampil, ubah, dan hapus data, validasi input dan password, serta unggah
-foto (format salah dan ukuran melebihi batas). Saya juga memastikan fitur yang sudah ada
-(Manajemen Admin, Manajemen Kendaraan, katalog, dan keranjang) tetap berjalan. Hasilnya ada
-pada tabel pengujian di atas.
-
+### 6.
